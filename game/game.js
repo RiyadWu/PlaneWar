@@ -21,6 +21,7 @@ class Game {
             bulletSpeed: 3,
             playerSpeed: 10,
             backgroundSpeed: 2,
+            coolDown: 3,
         }
         this.__setup()
     }
