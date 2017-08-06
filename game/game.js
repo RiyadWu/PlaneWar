@@ -15,6 +15,7 @@ class Game {
                 bullet: 'img/bullet.png',
                 enemy1: 'img/enemy1.png',
                 enemy2: 'img/enemy2.png',
+                particle: 'img/particle.png',
             },
             enemyNum: 5,
             enemySpeed: 3,
@@ -61,8 +62,7 @@ class Game {
     }
 
     imageByName(name) {
-        const img = this.images[name]
-        return img
+        return this.images[name]
     }
 
     registerActions(key, action) {

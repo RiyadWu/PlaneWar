@@ -8,6 +8,7 @@ class SceneEnd extends BaseScene {
     }
 
     draw () {
+        super.draw()
         this.game.context.fillText('Game Over! 按 r 重新开始游戏', 180, 200)
     }
 

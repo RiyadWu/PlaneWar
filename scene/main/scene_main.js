@@ -3,7 +3,6 @@ class Scene extends BaseScene{
         super(game)
         this.bg = new Background(game, 'background')
         this.player = new Player(game, 'player')
-        this.elements = []
         this.__setup()
     }
 
@@ -38,19 +37,14 @@ class Scene extends BaseScene{
         enableDebug(this.game)
     }
 
-    addElement(element) {
-        this.elements.push(element)
-    }
-
     draw() {
-        this.elements.forEach(e => e.draw())
+        super.draw()
         this.game.context.fillText('score: ' + score, 10, 10)
     }
 
     update() {
-        const es = this.elements
-        es.forEach(e => e.update())
-        this.elements = es.filter(e => e.alive)
+        super.update()
+        this.elements = this.elements.filter(e => e.alive)
     }
 
     addEnemy() {
