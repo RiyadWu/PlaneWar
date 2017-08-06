@@ -10,7 +10,6 @@ class Scene extends BaseScene{
         this.player.scene = this
         this.addElement(this.bg)
         this.addElement(this.player)
-        this.addEnemy()
 
         const game = this.game
         const player = this.player
@@ -44,16 +43,32 @@ class Scene extends BaseScene{
 
     update() {
         super.update()
+        this.hitEnemy()
         this.elements = this.elements.filter(e => e.alive)
+        this.addEnemy()
     }
 
     addEnemy() {
-        const len = this.game.config.enemyNum
-        const game = this.game
-        for(let i = 0; i < len; i++) {
+        const enemies = this.elements.filter(e => e instanceof Enemy)
+        if (enemies.length < this.game.config.enemyNum) {
             const type = 'enemy' + randomNum(1,2)
-            const e = new Enemy(game, type)
+            const e = new Enemy(this.game, type)
+            e.scene = this
             this.addElement(e)
         }
+    }
+
+    hitEnemy() {
+        const enemies = this.elements.filter(e => e instanceof Enemy)
+        const bullets = this.elements.filter(e => e instanceof Bullet)
+
+        bullets.forEach(b => {
+            enemies.forEach(e => {
+                if (collide(b, e) || collide(e, b)) {
+                    b.die()
+                    e.hit()
+                }
+            })
+        })
     }
 }

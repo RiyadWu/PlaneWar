@@ -5,7 +5,6 @@ class Bullet extends GameImage{
     constructor(game, name) {
         super(game, name)
         this.speed = game.config.bulletSpeed
-        this.alive = true
         this.__setup()
     }
 
@@ -19,6 +18,10 @@ class Bullet extends GameImage{
         if (this.y < -10) {
             this.alive = false
         }
+    }
+
+    die() {
+        this.alive = false
     }
 
 }

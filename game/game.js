@@ -17,6 +17,8 @@ class Game {
                 enemy2: 'img/enemy2.png',
                 particle: 'img/particle.png',
             },
+            enemy1Life: 1,
+            enemy2Life: 3,
             enemyNum: 5,
             enemySpeed: 3,
             bulletSpeed: 3,
