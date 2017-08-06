@@ -1,4 +1,3 @@
-// todo: 1.飞机大战素材 云/飞机 2.新建图片类 3.Scene中加载所有的元素并自动画出来
 class Game {
     constructor(callback) {
         this.callback = callback
@@ -11,11 +10,17 @@ class Game {
             debug: false,
             fps: 30,
             images : {
-                skyUp: 'img/background.png',
-                skyDown: 'img/background.png',
+                background: 'img/background.png',
                 player: 'img/hero.png',
                 bullet: 'img/bullet.png',
+                enemy1: 'img/enemy1.png',
+                enemy2: 'img/enemy2.png',
             },
+            enemyNum: 5,
+            enemySpeed: 3,
+            bulletSpeed: 3,
+            playerSpeed: 10,
+            backgroundSpeed: 2,
         }
         this.__setup()
     }

@@ -16,3 +16,8 @@ const collide = (a, b) => {
     }
     return false
 }
+
+const randomNum = (start, end) => {
+    const n = Math.random() * (end - start + 1)
+    return  Math.floor(n + start)
+}

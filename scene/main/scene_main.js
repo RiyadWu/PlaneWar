@@ -1,62 +1,65 @@
 class Scene extends BaseScene{
     constructor(game) {
         super(game)
-        this.elements = {}
+        this.bg = new Background(game, 'background')
+        this.player = new Player(game, 'player')
+        this.elements = []
         this.__setup()
     }
 
-    __connectBg () {
-        const e = this.elements
-        e.skyDown.y = e.skyUp.y - e.skyUp.h + 1
-    }
-
     __setup() {
+        this.player.scene = this
+        this.addElement(this.bg)
+        this.addElement(this.player)
+        this.addEnemy()
+
         const game = this.game
-        this.__addElement('skyUp')
-        this.__addElement('skyDown')
-        this.__addElement('player')
+        const player = this.player
+        game.registerActions('a', () => {
+            player.moveLeft()
+        })
 
-        const player = this.elements.player
-        player.w = 20
-        player.h = 40
-        player.x = 140
-        player.y = 500
-        // game.registerActions('a', () => {
-        //     player.moveLeft()
-        // })
-        //
-        // game.registerActions('d', () => {
-        //     player.moveRight()
-        // })
-        //
-        // game.registerActions('f', () => {
-        //     ball.fire()
-        // })
+        game.registerActions('d', () => {
+            player.moveRight()
+        })
 
-        enableDebug(game)
+        game.registerActions('w', () => {
+            player.moveUp()
+        })
 
-        this.__connectBg()
+        game.registerActions('s', () => {
+            player.moveDown()
+        })
+
+        game.registerActions('j', () => {
+            player.fire()
+        })
+
+        enableDebug(this.game)
     }
 
-    __addElement(name) {
-        this.elements[name] = new GameImage(this.game, name)
+    addElement(element) {
+        this.elements.push(element)
     }
 
     draw() {
-        const e = this.elements
-        Object.keys(e).forEach(k => {
-            this.game.drawImage(e[k])
-        })
+        this.elements.forEach(e => e.draw())
         this.game.context.fillText('score: ' + score, 10, 10)
     }
 
     update() {
-        const u = this.elements.skyUp
-        if (u.y >= u.h) {
-            u.y = 0
-        }
-        this.__connectBg()
+        const es = this.elements
+        es.forEach(e => e.update())
+        this.elements = es.filter(e => e.alive)
+    }
 
-        u.y += 1
+    addEnemy() {
+        const len = this.game.config.enemyNum
+        const game = this.game
+        for(let i = 0; i < len; i++) {
+            const type = 'enemy' + randomNum(1,2)
+            const e = new Enemy(game, type)
+            this.addElement(e)
+        }
     }
 }

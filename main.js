@@ -30,7 +30,7 @@ let score = 0
 
 const __main = () => {
 
-    fullScreen()
+    // fullScreen()
 
     new Game((g) => {
 
