@@ -30,10 +30,41 @@
     <body>
         <canvas id="id-canvas" width="400" height="600"></canvas>
         <hr>
-        <input type="range" id="id-fps-range" data-value='fps' min="1" max="200">
-        <input type="range" id="id-fps-range" min="1" max="200">
-        <input type="range" id="id-fps-range" min="1" max="200">
-        <input type="range" id="id-fps-range" min="1" max="200">
+        <div>
+            <label>
+                <input type="range" data-value='fps' min="1" max="200" value="" class="clz-slider">
+                游戏速度：<span class="clz-range-text"></span>
+            </label>
+        </div>
+
+        <div>
+            <label>
+                <input type="range" data-value='bulletSpeed' min="1" max="200" value="" class="clz-slider">
+                子弹速度：<span class="clz-range-text"></span>
+            </label>
+        </div>
+
+        <div>
+            <label>
+                <input type="range" data-value='enemySpeed' min="1" max="200" value="" class="clz-slider">
+                敌机速度：<span class="clz-range-text"></span>
+            </label>
+        </div>
+
+        <div>
+            <label>
+                <input type="range" data-value='playerSpeed' min="1" max="200" value="" class="clz-slider">
+                玩家速度：<span class="clz-range-text"></span>
+            </label>
+        </div>
+
+        <div>
+            <label>
+                <input type="range" data-value='backgroundSpeed' min="1" max="200" value="" class="clz-slider">
+                背景速度：<span class="clz-range-text"></span>
+            </label>
+        </div>
+
         <script src="main.js"></script>
 
     </body>

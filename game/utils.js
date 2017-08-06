@@ -1,11 +1,20 @@
-var log = console.log.bind(console)
+const log = console.log.bind(console)
 
-var e = (element, selector) => {
+const e = (element, selector) => {
     return element.querySelector(selector)
 }
 
-var bindEvent = (element, eventName, callback) => {
+const es = (element, selector) => {
+    return element.querySelectorAll(selector)
+}
+
+const bindEvent = (element, eventName, callback) => {
     element.addEventListener(eventName, callback)
+}
+
+const bindAll = (element, selector, eventName, callback) => {
+    const eles = es(element, selector)
+    eles.forEach(ele => bindEvent(ele, eventName, callback))
 }
 
 const collide = (a, b) => {

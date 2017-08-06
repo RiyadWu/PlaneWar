@@ -18,11 +18,12 @@ const enableDebug = (game) => {
         }
     })
 
-    const fpsRange = e(document, '#id-fps-range')
-    bindEvent(fpsRange, 'input', function (e) {
-        const target = e.target
-        const fps = target.value
-        game.config.fps = Number(fps)
+    bindAll(document, '.clz-slider', 'input', (event) => {
+        const target = event.target
+        const val = target.dataset["value"]
+        const sliderVal = target.value
+        eval(`game.config.${val}=${sliderVal}`)
+        target.closest('label').querySelector('.clz-range-text').innerText = sliderVal
     })
 }
 
