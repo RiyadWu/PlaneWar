@@ -19,8 +19,6 @@
         <script src="game/base_scene.js" charset="utf-8"></script>
         <script src="game/image.js" charset="utf-8"></script>
         <script src="scene/main/block.js" charset="utf-8"></script>
-        <script src="scene/main/paddle.js" charset="utf-8"></script>
-        <script src="scene/main/ball.js" charset="utf-8"></script>
         <script src="game/level.js" charset="utf-8"></script>
         <script src="scene/main/scene_main.js" charset="utf-8"></script>
         <script src="scene/end/scene_end.js" charset="utf-8"></script>
@@ -30,18 +28,6 @@
         <canvas id="id-canvas" width="400" height="600"></canvas>
         <hr>
         <input type="range" id="id-fps-range" min="1" max="200">
-        <script type="text/javascript">
-            (function() {
-                const canvas = document.querySelector('#id-canvas')
-                window.addEventListener('resize', resizeCanvas, false)
-
-                function resizeCanvas() {
-                    canvas.width = window.innerWidth
-                    canvas.height = window.innerHeight
-                }
-                resizeCanvas()
-            })()
-        </script>
         <script src="main.js"></script>
 
     </body>

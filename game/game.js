@@ -6,14 +6,24 @@ class Game {
         this.actions = {}
         this.keysDowns = {}
         this.images = {}
+        this.config = {
+            pause: false,
+            debug: false,
+            fps: 30,
+            images : {
+                skyUp: 'img/background.png',
+                skyDown: 'img/background.png',
+                player: 'img/hero.png',
+                bullet: 'img/bullet.png',
+            },
+        }
         this.__setup()
     }
 
     __setup() {
         const canvas = e(document, '#id-canvas')
         this.canvas = canvas
-        const context = canvas.getContext('2d')
-        this.context = context
+        this.context = canvas.getContext('2d')
 
         bindEvent(window, 'keydown', (event) => {
             this.keysDowns[event.key] = true
@@ -31,7 +41,9 @@ class Game {
     }
 
     update() {
-        this.scene.update()
+        if  (!this.config.pause) {
+            this.scene.update()
+        }
     }
 
     draw() {
@@ -59,7 +71,7 @@ class Game {
         this.scene = scene
         setTimeout(() => {
             this.runLoop()
-        }, 1000 / g_data.fps)
+        }, 1000 / this.config.fps)
     }
 
     runLoop() {
@@ -77,7 +89,7 @@ class Game {
 
         setTimeout(() => {
             this.runLoop()
-        }, 1000 / g_data.fps)
+        }, 1000 / this.config.fps)
     }
 
     run() {
@@ -86,7 +98,7 @@ class Game {
 
     __loadAllImg() {
         let successNum = 0
-        const images = g_data.images
+        const images = this.config.images
         const names = Object.keys(images)
         names.forEach(k => {
             let path = images[k]
