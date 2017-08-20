@@ -27,8 +27,6 @@ const enableDebug = (game) => {
     })
 }
 
-let score = 0
-
 const __main = () => {
 
     // fullScreen()

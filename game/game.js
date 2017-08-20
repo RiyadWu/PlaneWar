@@ -22,9 +22,12 @@ class Game {
             enemyNum: 5,
             enemySpeed: 3,
             bulletSpeed: 3,
+            enemyBulletSpeed: -2,
             playerSpeed: 10,
             backgroundSpeed: 2,
             coolDown: 3,
+            enemyCoolDown: 30,
+            score: 0,
         }
         this.__setup()
     }

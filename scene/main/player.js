@@ -11,6 +11,7 @@ class Player extends GameImage{
     __setup() {
         this.x = 100
         this.y = 500
+        this.life = 5
     }
 
     fire() {
@@ -19,6 +20,7 @@ class Player extends GameImage{
             const bullet = new Bullet(this.game, 'bullet')
             bullet.x = this.x + this.w / 2
             bullet.y = this.y
+            bullet.type = 'player'
             this.scene.addElement(bullet)
         }
     }
@@ -29,6 +31,20 @@ class Player extends GameImage{
 
     update() {
         this.coolDown--
+        if (this.life < 1) {
+            this.die()
+        }
+    }
+
+    hit() {
+        this.life--
+    }
+
+    die() {
+        this.alive = false
+        const p = new ParticaleSystem(this.game)
+        p.init(this.x, this.y)
+        this.scene.addElement(p)
     }
 
     moveLeft() {
