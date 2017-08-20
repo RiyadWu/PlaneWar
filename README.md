@@ -10,5 +10,4 @@ Plane War written by js
 5. press `J` to fire
 
 ## Demo
-![loading…](https://github.com/RiyadWu/PlaneWar/blob/master/img/planeWar.gif)
-# My project's README
+![planeWar.gif](https://github.com/RiyadWu/PlaneWar/blob/master/img/planeWar.gif)
