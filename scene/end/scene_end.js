@@ -2,6 +2,7 @@ class SceneEnd extends BaseScene {
     constructor(game) {
         super(game)
         this.game.registerActions('r', () => {
+            this.game.config.score = 0
             const s = new Scene(game)
             game.replaceScene(s)
         })
